@@ -1,6 +1,61 @@
-<html>
-  <head>
-    <title>Hola</title>
-  </head>
-  <body></body>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>Corazón CSS</title>
+<style>
+    /* El cuerpo ocupa toda la ventana, negro y centrado */
+    html, body{
+        height:100%;
+        margin:0;
+    }
+    body{
+        background:#000;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    /* Corazón “dibujado” con dos círculos y un cuadrado girado */
+    .heart{
+        position:relative;
+        width:150px;          /* Ajusta este tamaño a tu gusto */
+        height:150px;
+        transform:rotate(-45deg);
+    }
+    .heart,
+    .heart::before,
+    .heart::after{
+        background:#e63946;   /* Color del corazón */
+    }
+    .heart::before,
+    .heart::after{
+        content:"";
+        position:absolute;
+        border-radius:50%;
+        width:150px;
+        height:150px;
+    }
+    .heart::before{
+        top:-75px;            /* Desplaza arriba la “oreja” izquierda */
+        left:0;
+    }
+    .heart::after{
+        left:75px;            /* Desplaza a la derecha la “oreja” derecha */
+        top:0;
+    }
+
+    /* (Opcional) Animación de latido */
+    @keyframes beat{
+        0%, 20%, 40%, 60%, 80%, 100%{ transform:scale(1) rotate(-45deg); }
+        10%, 30%, 50%, 70%, 90%    { transform:scale(1.12) rotate(-45deg); }
+    }
+    .heart{
+        animation:beat 6s infinite;
+    }
+</style>
+</head>
+<body>
+    <div class="heart"></div>
+</body>
 </html>
